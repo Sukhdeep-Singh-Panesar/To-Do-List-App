@@ -1,12 +1,12 @@
 import './App.css'
+import './components/Navbar.tsx'
+import Navbar from "./components/Navbar.tsx";
 
 function App() {
 
   return (
     <>
-      <div className="container bg-violet-300 justify-between mx-auto text-center my-2">
-        <h1>Hurrah! Setup completes.</h1>
-      </div>
+     <Navbar />
     </>
   )
 }
