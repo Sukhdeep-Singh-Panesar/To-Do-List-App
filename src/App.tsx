@@ -12,6 +12,11 @@ function App() {
         weekday: "long",
     });
 
+    const fullYearDetail:string = today.toLocaleString("en-UK",{
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    })
   return (
     <>
      <Navbar />
@@ -30,6 +35,16 @@ function App() {
         <Input type={'text'} placeholder={'Detail of your task'} className="flex-1 h-15 text-sm bg-blue-100 placeholder:text-center"/>
         <Button className={'bg-green-600 h-15 p-4'}>add</Button>
         </div>
+
+            {/*middle-Middle part*/}
+            <div className="middlemiddle flex items-center justify-between p-6 pt-1 w-full ml-2 ">
+                <div className="datecontainer text-3xl pr-20 font-semibold text-red-300">
+                    {fullYearDetail}
+                </div>
+                <div className="searchbar">
+                    <input type={'search'} placeholder={'search...'} className="h-7 w-30 text-sm border-4 border-y-yellow-300 rounded-full placeholder:text-center"></input>
+                </div>
+            </div>
             </Card>
 
         <Footer />
