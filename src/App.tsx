@@ -4,6 +4,7 @@ import Footer from "./components/Footer.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import {Input} from "@/components/ui/input.tsx";
 import {Card} from "@/components/ui/card.tsx";
+import {Calendar} from "@/components/ui/calendar.tsx";
 
 function App() {
     const today:Date = new Date();
@@ -45,7 +46,15 @@ function App() {
                     <input type={'search'} placeholder={'search...'} className="h-7 w-30 text-sm border-4 border-y-yellow-300 rounded-full placeholder:text-center"></input>
                 </div>
             </div>
+
+            <div className="middlethree flex items-center justify-between p-6 pt-1 w-full ml-2">
+                <Calendar
+                    mode="single"
+                    className="rounded-lg border border-collapse"
+                />
+            </div>
             </Card>
+
 
         <Footer />
     </>
