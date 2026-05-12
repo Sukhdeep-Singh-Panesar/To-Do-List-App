@@ -5,19 +5,41 @@ import {Button} from "@/components/ui/button.tsx";
 import {Input} from "@/components/ui/input.tsx";
 import {Card} from "@/components/ui/card.tsx";
 import {Calendar} from "@/components/ui/calendar.tsx";
+import {useState, type SetStateAction} from "react";
 
 function App() {
-    const today:Date = new Date();
+    const today: Date = new Date();
 
-    const day = today.toLocaleString("en-US",{
+    const day = today.toLocaleString("en-US", {
         weekday: "long",
     });
 
-    const fullYearDetail:string = today.toLocaleString("en-UK",{
+    const fullYearDetail: string = today.toLocaleString("en-UK", {
         day: "numeric",
         month: "long",
         year: "numeric"
     })
+
+    type Todo = {
+        id: number;
+      title: string;
+      detail: string;
+    }
+
+    const[addTitle, setAddTitle] = useState<string>("");
+    const[addDetail, setAddDetail] = useState<string>("");
+    const[todo, setTodo] = useState<Todo[]>([]);
+
+    const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
+        setAddTitle(e.target.value);
+    };
+    const handleAddDetail = (e: { target: { value: SetStateAction<string>; }; }) => {
+        setAddDetail(e.target.value);
+    }
+
+
+
+
   return (
     <>
      <Navbar />
@@ -32,9 +54,21 @@ function App() {
             <div className="datecontainer text-3xl pr-20 font-semibold text-red-300">
                 {day}
             </div>
-        <Input type={'text'} placeholder={'type Title of task'} className="h-15 text-sm w-64 ml-15 mr-3 bg-blue-100 placeholder:text-center"/>
-        <Input type={'text'} placeholder={'Detail of your task'} className="flex-1 h-15 text-sm bg-blue-100 placeholder:text-center"/>
-        <Button className={'bg-green-600 h-15 p-4'}>add</Button>
+        <Input value={addTitle} onChange={handleAdd} type={'text'} placeholder={'type Title of task'} className="h-15 text-sm w-64 ml-15 mr-3 bg-blue-100 placeholder:text-center"/>
+        <Input  value={addDetail} onChange={handleAddDetail} type={'text'} placeholder={'Detail of your task'} className="flex-1 h-15 text-sm bg-blue-100 placeholder:text-center"/>
+
+
+        <Button className={'bg-green-600 h-15 p-4'} onClick={()=> {
+            setTodo([{
+                        title: addTitle,
+                        id: Date.now(),
+                        detail: addDetail,
+                    },  ...todo],);
+            setAddTitle("")
+            setAddDetail("")
+        }}>
+            add </Button>
+
         </div>
 
             {/*middle-Middle part*/}
@@ -47,12 +81,41 @@ function App() {
                 </div>
             </div>
 
-            <div className="middlethree flex items-center justify-between p-6 pt-1 w-full ml-2">
+            <div className="flex  p-6 pt-1 w-full ml-2 gap-25">
+
+            <div className=" flex flex-col">
                 <Calendar
                     mode="single"
                     className="rounded-lg border border-collapse"
                 />
+                </div>
+
+                {/*Todo List Print*/}
+
+                <div className=" flex-1">
+
+                <ul className="flex flex-wrap gap-4">
+
+                    {todo.map(item =>(
+                     <li key={item.id} className="w-90 mb-4">
+                         <Card className="flex flex-col w-90 p-3 h-25 gap-2 ">
+                        <div className="edit flex justify-between items-center">
+                             <span> Title: {item.title} </span>
+                             <Button>Edit</Button>
+                        </div>
+                             <div className="edit flex  justify-between items-center">
+                         <span>Detail: {item.detail}</span>
+                             <Button>Delete</Button>
+                                 </div>
+                         </Card>
+                        </li>
+                    ))}
+
+                </ul>
+
             </div>
+                </div>
+
             </Card>
 
 
