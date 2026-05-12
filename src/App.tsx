@@ -7,6 +7,8 @@ import {Card} from "@/components/ui/card.tsx";
 import {Calendar} from "@/components/ui/calendar.tsx";
 import {useState, type SetStateAction} from "react";
 import { IoMdAdd } from "react-icons/io";
+import { MdDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 
 function App() {
     const today: Date = new Date();
@@ -132,11 +134,13 @@ function App() {
                              <Button className="cursor-pointer" onClick={ ()=> {
                                      handleEdit(item);
                                  }
-                             }>Edit</Button>
+                             }><CiEdit />
+                             </Button>
                         </div>
                              <div className="edit flex  justify-between items-center">
                          <span>Detail: {item.detail}</span>
-                             <Button  className="cursor-pointer" onClick={()=> handleDelete(item.id)}>Delete</Button>
+                             <Button  className="cursor-pointer" onClick={()=> handleDelete(item.id)}><MdDelete />
+                             </Button>
                                  </div>
                          </Card>
                         </li>
