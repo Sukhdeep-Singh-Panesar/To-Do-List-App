@@ -37,8 +37,9 @@ function App() {
         setAddDetail(e.target.value);
     }
 
-
-
+    const handleDelete = (id:number) => {
+        setTodo(todo.filter(item=> item.id !== id))
+    }
 
   return (
     <>
@@ -105,7 +106,7 @@ function App() {
                         </div>
                              <div className="edit flex  justify-between items-center">
                          <span>Detail: {item.detail}</span>
-                             <Button>Delete</Button>
+                             <Button onClick={()=> handleDelete(item.id)}>Delete</Button>
                                  </div>
                          </Card>
                         </li>
