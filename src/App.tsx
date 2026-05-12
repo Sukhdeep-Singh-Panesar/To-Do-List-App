@@ -103,14 +103,14 @@ function App() {
                 <div className="datecontainer text-3xl pr-20 font-semibold text-red-300">
                     {fullYearDetail}
                 </div>
-                <div className="searchbar">
-                    <input type={'search'} placeholder={'search...'} className="h-7 w-30 text-sm border-4 border-y-yellow-300 rounded-full placeholder:text-center"></input>
-                </div>
+                {/*<div className="searchbar">*/}
+                {/*    <input type={'search'} placeholder={'search...'} className="h-7 w-30 text-sm border-4 border-y-yellow-300 rounded-full placeholder:text-center"></input>*/}
+                {/*</div>*/}
             </div>
 
-            <div className="flex  p-6 pt-1 w-full ml-2 gap-25">
+            <div className="flex p-6 pt-1 w-full ml-2 gap-25">
 
-            <div className=" flex flex-col">
+            <div className=" flex flex-col mr-6">
                 <Calendar
                     mode="single"
                     className="rounded-lg border border-collapse"
@@ -121,7 +121,7 @@ function App() {
 
                 <div className=" flex-1">
 
-                <ul className="flex flex-wrap gap-4">
+                <ul className="flex flex-wrap gap-4 gap-x-16">
 
                     {todo.map(item =>(
                      <li key={item.id} className="w-90 mb-4">
