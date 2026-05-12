@@ -29,6 +29,7 @@ function App() {
     const[addTitle, setAddTitle] = useState<string>("");
     const[addDetail, setAddDetail] = useState<string>("");
     const[todo, setTodo] = useState<Todo[]>([]);
+    const[edit, setEdit] = useState<number | null>(null);
 
     const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
         setAddTitle(e.target.value);
@@ -39,6 +40,11 @@ function App() {
 
     const handleDelete = (id:number) => {
         setTodo(todo.filter(item=> item.id !== id))
+    }
+    const handleEdit = (item: Todo) => {
+        setAddTitle(item.title);
+        setAddDetail(item.detail)
+        setEdit(item.id)
     }
 
   return (
@@ -60,13 +66,33 @@ function App() {
 
 
         <Button className={'bg-green-600 h-15 p-4'} onClick={()=> {
-            setTodo([{
-                        title: addTitle,
-                        id: Date.now(),
-                        detail: addDetail,
-                    },  ...todo],);
-            setAddTitle("")
-            setAddDetail("")
+
+            if(edit) {
+               setTodo(
+                   todo.map( item => {
+                           if (item.id === edit) {
+                               return (
+                                   {...item, title: addTitle, detail: addDetail}
+                               )
+                           } else {
+                               return item
+                           }
+                       }
+                   )
+               )
+
+
+            }
+            else{
+                setTodo([{
+                    title: addTitle,
+                    id: Date.now(),
+                    detail: addDetail,
+                }, ...todo],);
+                setAddTitle("")
+                setAddDetail("")
+            }
+
         }}>
             add </Button>
 
@@ -102,7 +128,10 @@ function App() {
                          <Card className="flex flex-col w-90 p-3 h-25 gap-2 ">
                         <div className="edit flex justify-between items-center">
                              <span> Title: {item.title} </span>
-                             <Button>Edit</Button>
+                             <Button onClick={ ()=> {
+                                     handleEdit(item);
+                                 }
+                             }>Edit</Button>
                         </div>
                              <div className="edit flex  justify-between items-center">
                          <span>Detail: {item.detail}</span>
