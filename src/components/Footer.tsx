@@ -10,10 +10,10 @@ function Footer() {
                 <div className="bottomleft border-2 rounded-full p-2 border-black"><FcTodoList /></div>
                 <div className="centerContainer p-2">&copy; 2026 Sukhdeep Singh. All Rights Reserved. </div>
                 <div className="right flex gap-2">
-                <div className="bottomright border-2 rounded-full p-2 border-black "><FaFacebookF /></div>
-                <div className="bottomright border-2 rounded-full p-2 border-black "><FaLinkedinIn /></div>
-                <div className="bottomright border-2 rounded-full p-2 border-black "><FaXTwitter /></div>
-                <div className="bottomright border-2 rounded-full p-2 border-black "><FaGithub /></div>
+                <div className="bottomright border-2 rounded-full p-2 border-black cursor-pointer"><FaFacebookF /></div>
+                <div className="bottomright border-2 rounded-full p-2 border-black cursor-pointer"><FaLinkedinIn /></div>
+                <div className="bottomright border-2 rounded-full p-2 border-black cursor-pointer"><FaXTwitter /></div>
+                <div className="bottomright border-2 rounded-full p-2 border-black cursor-pointer"><FaGithub /></div>
                 </div>
             </div>
         </>

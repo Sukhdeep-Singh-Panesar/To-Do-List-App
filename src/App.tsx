@@ -6,6 +6,7 @@ import {Input} from "@/components/ui/input.tsx";
 import {Card} from "@/components/ui/card.tsx";
 import {Calendar} from "@/components/ui/calendar.tsx";
 import {useState, type SetStateAction} from "react";
+import { IoMdAdd } from "react-icons/io";
 
 function App() {
     const today: Date = new Date();
@@ -65,7 +66,7 @@ function App() {
         <Input  value={addDetail} onChange={handleAddDetail} type={'text'} placeholder={'Detail of your task'} className="flex-1 h-15 text-sm bg-blue-100 placeholder:text-center"/>
 
 
-        <Button className={'bg-green-600 h-15 p-4'} onClick={()=> {
+        <Button className={'bg-green-600 h-15 w-15 p-4 cursor-pointer'} onClick={()=> {
 
             if(edit) {
                setTodo(
@@ -94,7 +95,7 @@ function App() {
             }
 
         }}>
-            add </Button>
+            <IoMdAdd /> </Button>
 
         </div>
 
@@ -128,14 +129,14 @@ function App() {
                          <Card className="flex flex-col w-90 p-3 h-25 gap-2 ">
                         <div className="edit flex justify-between items-center">
                              <span> Title: {item.title} </span>
-                             <Button onClick={ ()=> {
+                             <Button className="cursor-pointer" onClick={ ()=> {
                                      handleEdit(item);
                                  }
                              }>Edit</Button>
                         </div>
                              <div className="edit flex  justify-between items-center">
                          <span>Detail: {item.detail}</span>
-                             <Button onClick={()=> handleDelete(item.id)}>Delete</Button>
+                             <Button  className="cursor-pointer" onClick={()=> handleDelete(item.id)}>Delete</Button>
                                  </div>
                          </Card>
                         </li>
