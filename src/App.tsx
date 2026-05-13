@@ -9,6 +9,8 @@ import {useState, type SetStateAction} from "react";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import {AlertContext} from "@/context/AlertContext.ts";
+import Alert from "./components/Alert.tsx"
 
 function App() {
     const today: Date = new Date();
@@ -33,6 +35,8 @@ function App() {
     const[addDetail, setAddDetail] = useState<string>("");
     const[todo, setTodo] = useState<Todo[]>([]);
     const[edit, setEdit] = useState<number | null>(null);
+    const[alert, setAlert] = useState<boolean>(false);
+
 
     const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
         setAddTitle(e.target.value);
@@ -51,8 +55,18 @@ function App() {
     }
 
   return (
-    <>
+
+
+        <AlertContext.Provider value={{
+            alert,
+            setAlert,
+            addTitle,
+            addDetail
+        }}>
      <Navbar />
+
+
+
 
         {/*Upper Section*/}
         <div className="uppersection flex text-5xl font-roboot font-semibold gap-2 p-6 w-full pl-25 ml-2">Hello,
@@ -69,6 +83,11 @@ function App() {
 
 
         <Button className={'bg-green-600 h-15 w-15 p-4 cursor-pointer'} onClick={()=> {
+            if(addTitle.trim() === "" || addDetail.trim() === "")
+            {
+                setAlert(true)
+                return;
+            }
 
             if(edit) {
                setTodo(
@@ -153,9 +172,10 @@ function App() {
 
             </Card>
 
-
         <Footer />
-    </>
+            <Alert/>
+        </AlertContext.Provider>
+
   )
 }
 
