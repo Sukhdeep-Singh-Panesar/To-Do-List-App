@@ -11,6 +11,7 @@ import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import {AlertContext} from "@/context/AlertContext.ts";
 import Alert from "./components/Alert.tsx"
+import {id} from "date-fns/locale";
 
 function App() {
     const today: Date = new Date();
@@ -53,7 +54,21 @@ function App() {
         setAddDetail(item.detail)
         setEdit(item.id)
     }
-
+    const handleComplete = (id:number) => {
+        const newTodo = todo.map((item) =>
+        {
+            if (item.id === id) {
+                return {
+                    ...item, completed: !item.completed
+                }
+            }
+            else{
+                return item
+                }
+            }
+        )
+        setTodo(newTodo)
+    }
 
   return (
 
@@ -106,9 +121,6 @@ function App() {
                        }
                    )
                )
-                setEdit(null);
-                setAddTitle("");
-                setAddDetail("");
 
             }
             else{
@@ -158,7 +170,8 @@ function App() {
 
 
                              <div className="checkb flex items-center gap-2">
-                                 <input type="checkbox" className=""
+                                 <input type="checkbox" className=""  checked={item.completed}
+                                        onChange={() => handleComplete(item.id)}
 
                                  />
                              <label id="MAC">Mark as Complete</label>
