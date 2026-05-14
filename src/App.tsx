@@ -54,6 +54,9 @@ function App() {
         setEdit(item.id)
     }
 
+    const handleComplete = (id:number) => {
+
+    }
   return (
 
 
@@ -78,8 +81,10 @@ function App() {
             <div className="datecontainer text-3xl pr-20 font-semibold text-red-300">
                 {day}
             </div>
+
         <Input value={addTitle} onChange={handleAdd} type={'text'} placeholder={'type Title of task'} className="h-15 text-sm w-64 ml-15 mr-3 bg-blue-100 placeholder:text-center"/>
         <Input  value={addDetail} onChange={handleAddDetail} type={'text'} placeholder={'Detail of your task'} className="flex-1 h-15 text-sm bg-blue-100 placeholder:text-center"/>
+
 
 
         <Button className={'bg-green-600 h-15 w-15 p-4 cursor-pointer'} onClick={()=> {
@@ -94,6 +99,7 @@ function App() {
                    todo.map( item => {
                            if (item.id === edit) {
                                return (
+
                                    {...item, title: addTitle, detail: addDetail}
                                )
                            } else {
@@ -147,7 +153,13 @@ function App() {
 
                     {todo.map(item =>(
                      <li key={item.id} className="w-90 mb-4">
-                         <Card className="flex flex-col w-90 p-3 h-25 gap-2 ">
+                         <Card className="flex flex-col w-90 p-3 h-30 gap-2 ">
+
+
+                             <div className="checkb flex items-center gap-2">
+                             <input type="checkbox" className="" onChange={() => handleComplete(item.id)} />
+                             <label id="MAC">Mark as Complete</label>
+                             </div>
                         <div className="edit flex justify-between items-center">
                              <span> Title: {item.title} </span>
                              <Button className="cursor-pointer" onClick={ ()=> {
