@@ -29,6 +29,7 @@ function App() {
         id: number;
       title: string;
       detail: string;
+      completed: boolean;
     }
 
     const[addTitle, setAddTitle] = useState<string>("");
@@ -36,7 +37,6 @@ function App() {
     const[todo, setTodo] = useState<Todo[]>([]);
     const[edit, setEdit] = useState<number | null>(null);
     const[alert, setAlert] = useState<boolean>(false);
-
 
     const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
         setAddTitle(e.target.value);
@@ -54,9 +54,7 @@ function App() {
         setEdit(item.id)
     }
 
-    const handleComplete = (id:number) => {
 
-    }
   return (
 
 
@@ -108,7 +106,9 @@ function App() {
                        }
                    )
                )
-
+                setEdit(null);
+                setAddTitle("");
+                setAddDetail("");
 
             }
             else{
@@ -116,6 +116,7 @@ function App() {
                     title: addTitle,
                     id: Date.now(),
                     detail: addDetail,
+                    completed: false
                 }, ...todo],);
                 setAddTitle("")
                 setAddDetail("")
@@ -157,11 +158,15 @@ function App() {
 
 
                              <div className="checkb flex items-center gap-2">
-                             <input type="checkbox" className="" onChange={() => handleComplete(item.id)} />
+                                 <input type="checkbox" className=""
+
+                                 />
                              <label id="MAC">Mark as Complete</label>
                              </div>
                         <div className="edit flex justify-between items-center">
-                             <span> Title: {item.title} </span>
+                             <span className={item.completed? "line-through": "" }>
+                             Title: {item.title}
+                                  </span>
                              <Button className="cursor-pointer" onClick={ ()=> {
                                      handleEdit(item);
                                  }
@@ -169,8 +174,8 @@ function App() {
                              </Button>
                         </div>
                              <div className="edit flex  justify-between items-center">
-                         <span>Detail: {item.detail}</span>
-                             <Button  className="cursor-pointer" onClick={()=> handleDelete(item.id)}><MdDelete />
+                         <span className={item.completed? "line-through": "" } >Detail: {item.detail}</span>
+                             <Button  className="cursor-pointer"  onClick={()=> handleDelete(item.id)}><MdDelete />
                              </Button>
                                  </div>
                          </Card>
