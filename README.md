@@ -47,7 +47,7 @@ src/
 
 Clone the repository:
 
-git clone https://github.com/your-username/to-do-list-app.git
+git clone https://github.com/Sukhdeep-Singh-Panesar/To-Do-List-App
 
 ### Navigate into the project directory:
 
