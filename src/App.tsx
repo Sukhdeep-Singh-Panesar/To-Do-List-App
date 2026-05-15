@@ -38,6 +38,7 @@ function App() {
     const[edit, setEdit] = useState<number | null>(null);
     const[alert, setAlert] = useState<boolean>(false);
 
+
     const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
         setAddTitle(e.target.value);
     };
@@ -47,6 +48,7 @@ function App() {
 
     const handleDelete = (id:number) => {
         setTodo(todo.filter(item=> item.id !== id))
+        setCount(count => count - 1);
     }
     const handleEdit = (item: Todo) => {
         setAddTitle(item.title);
@@ -69,6 +71,7 @@ function App() {
         setTodo(newTodo)
     }
 
+    const[count, setCount] = useState<number>(0)
   return (
 
 
@@ -131,6 +134,7 @@ function App() {
                 }, ...todo],);
                 setAddTitle("")
                 setAddDetail("")
+                setCount(count+1)
             }
 
         }}>
@@ -201,11 +205,11 @@ function App() {
 
 
             <div className="taskCard flex items-center p-2 pt-1 ml-14 gap-3 mr-10">
-                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C7AE93] items-center text-xl">Task Completed</Card>
+                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C7AE93] items-center text-xl">Task Completed </Card>
 
                 <Card className="h-37 w-47 text-[#3A3A36] bg-[#C4A49F] items-center text-xl">Pending Task</Card>
 
-                <Card className="h-37 w-47 flex-1 items-center text-3xl text-sky-400">Task Created</Card>
+                <Card className="h-37 w-47 flex-1 items-center text-3xl text-sky-400">Task Created {count}</Card>
             </div>
 
             </Card>
