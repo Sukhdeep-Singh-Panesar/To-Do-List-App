@@ -209,11 +209,18 @@ function App() {
 
 
             <div className="taskCard flex items-center p-2 pt-1 ml-14 gap-3 mr-10">
-                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C7AE93] items-center text-xl">Task Completed {completed}</Card>
+                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C7AE93] items-center text-xl">
+                    Task
+                    Completed
+                    <span className="text-3xl font-bold">{completed}</span></Card>
 
-                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C4A49F] items-center text-xl">Pending Task {pendingTask}</Card>
+                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C4A49F] items-center text-xl">Pending Task
+                     <span className="text-3xl font-bold">{pendingTask}</span>
+                </Card>
 
-                <Card className="h-37 w-47 flex-1 items-center text-3xl text-sky-400">Task Created {created}</Card>
+                <Card className="h-37 w-47 flex-1 items-center text-3xl text-sky-400">Task Created
+                     <span className="text-3xl font-bold text-black">{created}</span>
+                </Card>
             </div>
 
             </Card>
