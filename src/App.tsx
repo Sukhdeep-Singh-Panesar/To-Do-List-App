@@ -11,7 +11,6 @@ import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import {AlertContext} from "@/context/AlertContext.ts";
 import Alert from "./components/Alert.tsx"
-import {id} from "date-fns/locale";
 
 function App() {
     const today: Date = new Date();
