@@ -199,6 +199,15 @@ function App() {
             </div>
                 </div>
 
+
+            <div className="taskCard flex items-center p-2 pt-1 ml-14 gap-3 mr-10">
+                <Card className="h-37 w-47">Task Completed</Card>
+
+                <Card className="h-37 w-47">Pending Task</Card>
+
+                <Card className="h-37 w-47 flex-1">Task Created</Card>
+            </div>
+
             </Card>
 
         <Footer />
