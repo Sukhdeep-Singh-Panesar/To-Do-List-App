@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {Input} from "@/components/ui/input.tsx";
 import {Card} from "@/components/ui/card.tsx";
 import {Calendar} from "@/components/ui/calendar.tsx";
-import {useState, type SetStateAction} from "react";
+import {useState, type SetStateAction, useEffect} from "react";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
@@ -34,9 +34,24 @@ function App() {
 
     const[addTitle, setAddTitle] = useState<string>("");
     const[addDetail, setAddDetail] = useState<string>("");
-    const[todo, setTodo] = useState<Todo[]>([]);
+    const[todo, setTodo] = useState<Todo[]>(()=>{
+        const todos = localStorage.getItem("todo");
+        if(todos){
+            return JSON.parse(todos);
+        }
+        else {
+            return []
+        }
+    });
     const[edit, setEdit] = useState<number | null>(null);
     const[alert, setAlert] = useState<boolean>(false);
+
+
+
+    useEffect( () => {
+        localStorage.setItem("todo", JSON.stringify(todo))
+    },[todo]
+    )
 
     const handleAdd = (e: { target: { value: SetStateAction<string>; }; }) => {
         setAddTitle(e.target.value);
