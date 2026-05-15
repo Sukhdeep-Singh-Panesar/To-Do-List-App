@@ -161,11 +161,11 @@ function App() {
 
                 <div className=" flex-1">
 
-                <ul className="flex flex-wrap gap-4 gap-x-16">
+                <ul className="flex flex-wrap gap-4 gap-x-16 ">
 
                     {todo.map(item =>(
-                     <li key={item.id} className="w-90 mb-4">
-                         <Card className="flex flex-col w-90 p-3 h-30 gap-2 ">
+                     <li key={item.id} className="w-90 mb-4 ">
+                         <Card className="flex flex-col w-90 p-3 h-30 gap-2 bg-[#C7AE93]">
 
 
                              <div className="checkb flex items-center gap-2">
@@ -201,11 +201,11 @@ function App() {
 
 
             <div className="taskCard flex items-center p-2 pt-1 ml-14 gap-3 mr-10">
-                <Card className="h-37 w-47">Task Completed</Card>
+                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C7AE93] items-center text-xl">Task Completed</Card>
 
-                <Card className="h-37 w-47">Pending Task</Card>
+                <Card className="h-37 w-47 text-[#3A3A36] bg-[#C4A49F] items-center text-xl">Pending Task</Card>
 
-                <Card className="h-37 w-47 flex-1">Task Created</Card>
+                <Card className="h-37 w-47 flex-1 items-center text-3xl text-sky-400">Task Created</Card>
             </div>
 
             </Card>
