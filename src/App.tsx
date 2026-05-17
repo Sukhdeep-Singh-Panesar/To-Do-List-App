@@ -101,6 +101,7 @@ function App() {
             addTitle,
             addDetail
         }}>
+            <div className="bg-pink-100">
      <Navbar />
 
 
@@ -242,6 +243,7 @@ function App() {
 
         <Footer />
             <Alert/>
+    </div>
         </AlertContext.Provider>
 
   )
