@@ -1,6 +1,6 @@
 # To-Do List App
 
-A simple, modern, and responsive To-Do List web application built with React + TypeScript + Vite.
+A simple, modern, and responsive To-Do List web application built with React + TypeScript + Vite + Tailwind + Shadcn UI.
 
 It helps users manage daily tasks efficiently with a clean UI and persistent storage.
 
