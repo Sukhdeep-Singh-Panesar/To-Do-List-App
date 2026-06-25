@@ -69,14 +69,6 @@ Preview the production build:
 
 npm run preview
 
-## Future Improvements
-
-- user authentication
-- Cloud database integration (MongoDB / Firebase)
-- Mobile app version
-- Task reminders and notifications
-- Due dates and priority system
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
